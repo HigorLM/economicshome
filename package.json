@@ -1,5 +1,5 @@
 {
-  "name": "foodreview",
+  "name": "economicshome",
   "version": "1.0.0",
   "description": "Sistema de Avaliação de Investimentos",
   "main": "server.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eduardorahal/foodreview.git"
+    "url": "git+https://github.com/HigorLM/economicshome.git"
   },
   "keywords": [
     "desempenho",
@@ -18,7 +18,7 @@
     "food",
     "app"
   ],
-  "author": "Eduardo Rahal",
+  "author": "Equipe JovemTech",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/eduardorahal/foodreview/issues"
