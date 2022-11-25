@@ -8,12 +8,12 @@ import { Context } from "../../context/authContext";
 import Stars from 'react-native-stars';
 import { Entypo } from "@expo/vector-icons";
 
-const RegisterReview = ({ navigation }) => {
+const RegisterDesempenho = ({ navigation }) => {
 
     const { state, dispatch } = useContext(Context);
 
     const [idUser, setidUser] = useState(state.idUser);
-    const [idRestaurant, setidRestaurant] = useState(state.idRestaurant);
+    const [idInvestimento, setidInvestimento] = useState(state.idInvestimento);
     const [comment, setComment] = useState('');
     const [stars, setStars] = useState('');
 
@@ -21,9 +21,9 @@ const RegisterReview = ({ navigation }) => {
 
     const onRegisterPressed = async () => {
         try {
-            const authData = await api.post("/review/register", {
+            const authData = await api.post("/desempenho/register", {
                 idUser: idUser,
-                idRestaurant: idRestaurant,
+                idInvestimento: idInvestimento,
                 comment: comment,
                 stars: stars,
             });
@@ -51,7 +51,7 @@ const RegisterReview = ({ navigation }) => {
             />
 
             <CustomInput
-                value={state.nameRestaurant}
+                value={state.nameInvestimento}
                 editable={false}
             />
 
@@ -112,4 +112,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default RegisterReview
+export default RegisterDesempenho

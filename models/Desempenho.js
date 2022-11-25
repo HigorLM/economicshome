@@ -1,10 +1,9 @@
 import Sequelize from 'sequelize';
 import connection from '../config/db.js';
-import Restaurant from './Restaurant.js';
-import User from '../models/User.js';
+import Investimento from './Investimento.js';
+import User from './User.js';
 
-const Review = connection.define(
-    'review',
+const Desempenho = connection.define( 'desempenho',
     {
         id: {
             type: Sequelize.INTEGER,
@@ -20,11 +19,11 @@ const Review = connection.define(
                 key: 'id'
             }
         },
-        idRestaurant: {
+        idInvestimento: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: 'restaurants',
+                model: 'investimentos',
                 key: 'id'
             }
         },
@@ -39,11 +38,11 @@ const Review = connection.define(
     }
 );
 
-Review.belongsTo(Restaurant, {
-    foreignKey: 'idRestaurant'
+Desempenho.belongsTo(Investimento, {
+    foreignKey: 'idInvestimento'
   });
-Review.belongsTo(User, {
+Desempenho.belongsTo(User, {
     foreignKey: 'idUser'
   });
 
-export default Review;
+export default Desempenho;

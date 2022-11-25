@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
     view: {
         alignItems: 'center',
         padding: 20,
+        backgroundColor: "#f2e6d3",
+        flex: 1
     },
     logo: {
         width: '70%',
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     },
     createAccountText: {
         fontWeight: "bold",
-        color: "#6200ee",
+        color: "#6eb684",
     },
 });
 

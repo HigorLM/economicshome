@@ -7,8 +7,8 @@ let initialState = {
     name: '',
     isAdmin: false,
     idUser: '',
-    idRestaurant: '',
-    nameRestaurant: '',
+    idInvestimento: '',
+    nameInvestimento: '',
     update: false
 }
 
@@ -32,11 +32,11 @@ const reducer = (state, action) => {
                 isAdmin: action.payload.admin, 
                 name: action.payload.name,
             }
-        case "setRestaurant":
+        case "setInvestimento":
             return { 
                 ...state, 
-                idRestaurant: action.payload.id,
-                nameRestaurant: action.payload.name                
+                idInvestimento: action.payload.id,
+                nameInvestimento: action.payload.name                
             }
         case "update":
             return {
@@ -57,5 +57,4 @@ export const Provider = ({children}) => {
             {children}
         </Context.Provider>
     )
-    
 }

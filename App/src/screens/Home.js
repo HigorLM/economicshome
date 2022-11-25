@@ -10,8 +10,8 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Olá, {state.name}</Text>
-      <CustomButton text="Restaurants" onPress={() => navigation.navigate("Restaurants")} />
-      <CustomButton text="Reviews" onPress={() => navigation.navigate("Reviews")} />
+      <CustomButton text="Investimentos" onPress={() => navigation.navigate("Investimentos")} />
+      <CustomButton text="Desempenhos" onPress={() => navigation.navigate("Desempenhos")} />
       <CustomButton text="Users" onPress={() => navigation.navigate("Users")} />
     </View>
   )
@@ -19,6 +19,7 @@ const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#f2e6d3",
     flex: 1,
     alignItems: "center",
     justifyContent:'space-around'

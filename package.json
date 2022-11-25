@@ -1,7 +1,7 @@
 {
   "name": "foodreview",
   "version": "1.0.0",
-  "description": "Sistema de Avaliação de Restaurantes",
+  "description": "Sistema de Avaliação de Investimentos",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -13,8 +13,8 @@
     "url": "git+https://github.com/eduardorahal/foodreview.git"
   },
   "keywords": [
-    "review",
-    "restaurant",
+    "desempenho",
+    "investimento",
     "food",
     "app"
   ],

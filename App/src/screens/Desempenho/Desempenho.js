@@ -5,19 +5,21 @@ import api from '../../api'
 import Stars from 'react-native-stars';
 import { Entypo } from "@expo/vector-icons";
 
-const RestaurantReviews = ({ navigation }) => {
+const InvestimentosDesempenhos = ({ navigation }) => {
+    const { state, dispatch } = useContext(Context)
 
-    const { state } = useContext(Context)
-
-    const [reviews, setReviews] = useState({});
+    const [desempenhos, setDesempenhos] = useState({});
 
     useEffect(() => {
         const onScreenLoad = async () => {
-            const list = await api.get('/review/findByRestaurant', {
+            const list = await api.get('/desempenho/findByUser', {
                 params: {
-                    idRestaurant: state.idRestaurant,
-                },
-            }).then((res) => setReviews(res.data.reviews))
+                    idUser: state.idUser,
+                  }
+            });
+            console.log(list);
+            setDesempenhos(list.data.desempenhos)
+            dispatch({type: "update", payload: false})
         }
         onScreenLoad();
     }, [state.update]
@@ -26,11 +28,12 @@ const RestaurantReviews = ({ navigation }) => {
     return (
         <View style={styles.view}>
             <FlatList
-                data={reviews}
+                data={desempenhos}
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.container}>
                             <View style={styles.text}>
+                                <Text style={styles.item}>{item.investimento.name}</Text>
                                 <Text style={styles.title}>{item.comment}</Text>
                                 <Stars
                                     count={5}
@@ -41,7 +44,6 @@ const RestaurantReviews = ({ navigation }) => {
                                     halfStar={<Entypo name='star' style={[styles.myStarStyle]} />}
                                     emptyStar={<Entypo name='star-outlined' style={[styles.myEmptyStarStyle]} />}
                                 />
-                                <Text style={styles.item}>Avaliado por: {item.user.name}</Text>
                             </View>
                         </View>
                     )
@@ -55,12 +57,13 @@ const RestaurantReviews = ({ navigation }) => {
     )
 }
 
-export default RestaurantReviews
+export default InvestimentosDesempenhos
 
 const styles = StyleSheet.create({
     view: {
         flex: 1,
         justifyContent: "center",
+        backgroundColor: "#f2e6d3"
     },
     container: {
         flexDirection: "row",
@@ -77,12 +80,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     title: {
-        fontSize: 30,
-        margin: 10,
+        fontSize: 20,
+        margin: 5,
         textAlign: 'center'
     },
     item: {
-        margin: 10,
+        margin: 5,
         fontSize: 15
     },
     icon: {

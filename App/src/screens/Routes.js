@@ -2,12 +2,14 @@ import { StyleSheet, Button } from 'react-native'
 import React, { useContext } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Entypo } from '@expo/vector-icons'
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Context } from '../context/authContext'
 
 import Home from './Home'
-import RestaurantRoutes from './restaurant/RestaurantRoutes'
-import ReviewRoutes from './review/ReviewRoutes'
+import InvestimentosRoutes from './Investimentos/InvestimentosRoutes'
+import ExtratoRoutes from './Desempenho/DesempenhoRoutes'
 import Users from './Users'
 
 const Tab = createBottomTabNavigator();
@@ -36,20 +38,21 @@ const Routes = ({ navigation }) => {
                 }}
             />
             <Tab.Screen
-                name="Restaurants"
-                component={RestaurantRoutes}
+                name="Investimentos"
+                component={InvestimentosRoutes}
                 options={{
                     tabBarIcon: () => (
-                        <Entypo name='bowl' size={30} />
+                        <Entypo name='piggy-bank' size={24} />,
+                        <FontAwesome5 name="piggy-bank" size={24} color="black" />
                     )
                 }}
             />
             <Tab.Screen
-                name="Reviews"
-                component={ReviewRoutes}
+                name="Desempenhos"
+                component={ExtratoRoutes}
                 options={{
                     tabBarIcon: () => (
-                        <Entypo name='fingerprint' size={30} />
+                        <MaterialCommunityIcons name="bank-transfer-in" size={24} color="black" />
                     )
                 }}
             />
@@ -57,7 +60,7 @@ const Routes = ({ navigation }) => {
             {state.isAdmin ? (
                 <Tab.Screen
                     name="Users"
-                    component={Users}
+                    component={Home}
                     options={{
                         tabBarIcon: () => (
                             <Entypo name='user' size={30} />

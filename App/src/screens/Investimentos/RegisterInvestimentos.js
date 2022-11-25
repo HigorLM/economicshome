@@ -7,31 +7,31 @@ import api from '../../api'
 import { Context } from '../../context/authContext'
 import {Picker} from '@react-native-picker/picker';
 
-const RegisterRestaurant = ({ navigation }) => {
+const RegisterInvestimentos = ({ navigation }) => {
 
     const { state, dispatch } = useContext(Context);
 
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [description, setDescription] = useState('');
-    const [address, setAddress] = useState('');
+    const [valor, setValor] = useState('');
 
     const { height } = useWindowDimensions();
 
     const onRegisterPressed = async () => {
         try {
-            const authData = await api.post("/restaurant/register", {
+            const authData = await api.post("/investimento/register", {
                 name: name,
                 type: type,
                 description: description,
-                address: address,
+                valor: valor,
             });
             if (authData.status === 200) {
                 alert(authData.data.message)
                 setName("")
                 setType("")
                 setDescription("")
-                setAddress("")
+                setValor("")
                 dispatch({type: "update", payload: true})
             }
             else {
@@ -52,26 +52,27 @@ const RegisterRestaurant = ({ navigation }) => {
             />
 
             <CustomInput
-                placeholder="Restaurant Name"
+                placeholder="Investimentos Name"
                 value={name}
                 setValue={setName}
             />
 
             <Picker
+            
                 selectedValue={type}
                 style={styles.picker}
                 onValueChange={setType}
             >
-                <Picker.Item label="FastFood" value="FastFood" />
-                <Picker.Item label="Japanese" value="Japanese" />
-                <Picker.Item label="Italian" value="Italian" />
-                <Picker.Item label="French" value="French" />
-                <Picker.Item label="Vegan" value="Vegan" />
-                <Picker.Item label="Brazilian" value="Brazilian" />
-                <Picker.Item label="Chinese" value="Chinese" />
-                <Picker.Item label="Barbecue" value="Barbecue" />
-                <Picker.Item label="Mexican" value="Mexican" />
-                <Picker.Item label="Hawaiian" value="Hawaiian" />
+                <Picker.Item label="Categoria" value="Categoria" />
+                <Picker.Item label="Celular" value="Celular" />
+                <Picker.Item label="Viagem" value="Viagem" />
+                <Picker.Item label="Tenis" value="Tenis" />
+                <Picker.Item label="Maquiagem" value="Maquiagem" />
+                <Picker.Item label="Emergencia" value="Emergencia" />
+                <Picker.Item label="Carro" value="Carro" />
+                <Picker.Item label="Moto" value="Moto" />
+                <Picker.Item label="Casa" value="Casa" />
+                <Picker.Item label="Outro" value="Outro" />
             </Picker>
 
             <CustomInput
@@ -81,9 +82,9 @@ const RegisterRestaurant = ({ navigation }) => {
             />
 
             <CustomInput
-                placeholder="Address"
-                value={address}
-                setValue={setAddress}
+                placeholder="Valor"
+                value={valor}
+                setValue={setValor}
             />
 
             <CustomButton text="Register" onPress={onRegisterPressed} />
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     view: {
         alignItems: 'center',
         padding: 20,
+        backgroundColor: "#f2e6d3"
     },
     logo: {
         width: '70%',
@@ -108,15 +110,15 @@ const styles = StyleSheet.create({
     picker: {
         marginVertical: 5,
         borderRadius: 5,
-        backgroundColor: 'lightgray',
+        backgroundColor: '#6db582',
         textAlignVertical: 'center',
         textAlign: 'center',
         fontSize: '14px',
         fontWeight: 'bold',
         borderWidth: 0,
         height: 45,
-        width: '100%'
+        width: '50%'
     }
 });
 
-export default RegisterRestaurant
+export default RegisterInvestimentos
